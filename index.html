@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edwin Nyandika | Precision Transcriptionist</title>
+    <script src="https://js.puter.com/v2/"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Newsreader', 'serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;500;600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #FDFDFB;
+            color: #121212;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .dark body {
+            background-color: #0A0A0A;
+            color: #E5E5E5;
+        }
+        .font-serif {
+            font-family: 'Newsreader', serif;
+        }
+        ::-webkit-scrollbar {
+            width: 3px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E5E5E5;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #1A1A1A;
+        }
+        .glass-island {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        .dark .glass-island {
+            background: rgba(15, 15, 15, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        /* 3D Glass Logo Styles */
+        .glass-3d-wrapper {
+            perspective: 800px;
+            display: inline-block;
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+        .glass-3d-logo {
+            position: relative;
+            transform-style: preserve-3d;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 
+                0 15px 35px -10px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+        .dark .glass-3d-logo {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 
+                0 15px 35px -10px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+        
+        .glass-3d-wrapper:hover .glass-3d-logo,
+        .group:hover .glass-3d-logo {
+            transform: rotateX(20deg) rotateY(-15deg) rotateZ(5deg) scale(1.05);
+            box-shadow: 
+                -20px 30px 40px -10px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        }
+        .dark .glass-3d-wrapper:hover .glass-3d-logo,
+        .dark .group:hover .glass-3d-logo {
+             box-shadow: 
+                -20px 30px 40px -10px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-3d-content {
+            transform: translateZ(30px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .glass-3d-shine {
+             position: absolute;
+             inset: 0;
+             background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,0.7) 48%, transparent 60%);
+             background-size: 200% 200%;
+             background-position: 200% center;
+             transition: background-position 0.8s ease-out;
+             border-radius: inherit;
+             mix-blend-mode: overlay;
+             pointer-events: none;
+             z-index: 10;
+        }
+        .glass-3d-wrapper:hover .glass-3d-shine,
+        .group:hover .glass-3d-shine {
+            background-position: -50% center;
+            transition: background-position 0.6s ease-in-out;
+        }
+
+        .glass-3d-logo::before {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            border-radius: inherit;
+            background: linear-gradient(135deg, rgba(0,0,0,0.05), transparent);
+            opacity: 0.2;
+            transform: translateZ(-10px);
+            pointer-events: none;
+        }
+        .dark .glass-3d-logo::before {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+        }
+
+        .noise-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url("https://www.transparenttextures.com/patterns/felt.png");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        
+        .editorial-line {
+            background: linear-gradient(to right, transparent, currentColor 15%, currentColor 85%, transparent);
+            height: 1px;
+            opacity: 0.1;
+        }
+
+        .vertical-grid {
+            background-image: linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px);
+            background-size: calc(100% / 12) 100%;
+        }
+        .dark .vertical-grid {
+            background-image: linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px);
+        }
+    </style>
+
+<link rel="stylesheet" href="/index.css">
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.2.0",
+    "react/": "https://esm.sh/react@18.2.0/",
+    "react-dom": "https://esm.sh/react-dom@18.2.0?deps=react@18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client?deps=react@18.2.0",
+    "lucide-react": "https://esm.sh/lucide-react@0.263.1?deps=react@18.2.0",
+    "framer-motion": "https://esm.sh/framer-motion@11.0.8?deps=react@18.2.0,react-dom@18.2.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+  <script type="module" crossorigin src="./assets/index-C0sPFfJW.js"></script>
+</head>
+<body class="overflow-x-hidden">
+    <div id="root"></div>
+</body>
+</html>
